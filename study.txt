@@ -1,0 +1,10 @@
+# git 사용법
+# local
+git status (추가할 내용 확인)
+git add . (추가)
+git commit -m "(commit name)"
+git branch -M main (버전 수정시에만 필요)
+
+# 원격(github)
+git remote add origin https://github.com/Toycartoon/DjangoProject.git
+git push -u origin main
