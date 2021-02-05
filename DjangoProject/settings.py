@@ -22,7 +22,7 @@ env = environ.Env(
 )
 # reading .env file
 environ.Env.read_env(
-    env_file=open(os.path.environ(".env"))
+    env_file=os.path.join(BASE_DIR, '.env')
 )
 
 # False if not in os.environ
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,7 @@ ROOT_URLCONF = 'DjangoProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
