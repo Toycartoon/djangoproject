@@ -3,8 +3,8 @@
 git status (추가할 내용 확인)
 git add . (추가)
 git commit -m "(commit name)"
-git branch -M main (버전 수정시에만 필요)
+git branch -M main (버전 수정시에만 필요) # main = branch 이름
 
 # 원격(github)
-git remote add origin https://github.com/Toycartoon/DjangoProject.git
+git remote add origin https://github.com/Toycartoon/DjangoProject.git # origin = 레지스토리
 git push -u origin main
