@@ -5,14 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<form action="{% url 'index' %}" method="POST">
+<form action="{% url 'index' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    이름 : <input type="text" name="name"> <br>
-    내용 : <input type="text" name="text"> <br>
+    아이디 : <input type="text" name="uid"> <br>
+    내용 : <input type="text" name="text" > <br>
+    사진 : <input type="file" name="images" multiple> <br>
     <input type="submit" value="확인"> <br>
-    <a href="Templates/show.html" target="_blank">
-        내용보기
-    </a>
 </form>
 </body>
 </html>

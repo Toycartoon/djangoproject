@@ -1,24 +1,26 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse
-from account.models import Data_Model
+from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import timezone
+from account.models import Data_Model, Photo
 
 
 def index(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        text = request.POST.get("text")
         form = Data_Model()
-        form.name = name
-        form.text = text
+        form.uid = request.POST["uid"]
+        form.passwd = request.POST["passwd"]
+        form.pub_date = timezone.datetime.now()
         form.save()
-        lst = Data_Model.objects.all()
-        return HttpResponseRedirect(reverse('index'))
+        for img in request.FILES.getlist('image'):
+            photo = Photo()
+            photo.data = form
+            photo.image = img
+            photo.save()
+
+        return redirect('show/' + str(form.uid), form.uid)
     else:
-        lst = Data_Model.objects.all()
         return render(request, 'index.html')
 
 
-def show(request):
-    lst = Data_Model.objects.all()
+def show(request, form_id):
+    lst = get_object_or_404(Data_Model, pk=form_id)
     return render(request, 'show.html', {'lst':lst})

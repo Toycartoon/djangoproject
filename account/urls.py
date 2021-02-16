@@ -4,5 +4,5 @@ from account import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    url('', views.show, name='show'),
+    path('show/<int:form_id>/', views.show, name='show'),
 ]

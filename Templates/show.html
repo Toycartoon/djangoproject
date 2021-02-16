@@ -7,9 +7,12 @@
 <body>
     {% csrf_token %}
     {% if lst %}
-        {% for x in lst %}
-            {{x.name}}
-            {{x.text}}
+        {% for x in lst.photo_set.all %}
+            {{ x.data.id }} <br>
+            {{ x.data.uid }} <br>
+            {{ x.data.passwd }} <br>
+            <img src="{{x.image.url}}">
+        <br>
         {% endfor %}
     {% endif %}
 </body>
