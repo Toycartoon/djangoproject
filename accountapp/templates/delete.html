@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{%  block contents %}
+<div style="text-align: center; max-width: 500px; margin: 4rem auto">
+    <div>
+        <h6>회원 탈퇴를 원하시면 버튼을 누르세요</h6>
+    </div>
+    <div>
+        <form action="{% url 'accountapp:delete' pk=user.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="탈퇴" class="btn btn-danger rounded-pill col-3 mt-3">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

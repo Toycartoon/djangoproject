@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% csrf_token %}
+    {% if lst %}
+    {% for x in lst.photo_set.all %}
+        번호 : {{ x.data.id }} <br>
+        아이디 : {{ x.data.uid }} <br>
+        비번 : {{ x.data.passwd }} <br>
+        사진 : <img src="{{ x.image.url }}" >
+    <br>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
